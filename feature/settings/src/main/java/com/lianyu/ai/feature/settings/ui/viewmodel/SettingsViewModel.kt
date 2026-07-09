@@ -14,6 +14,7 @@ import com.lianyu.ai.domain.ModelState
 import com.lianyu.ai.domain.ModelStatus
 import com.lianyu.ai.domain.ServiceRegistry
 import com.lianyu.ai.network.AiService
+import com.lianyu.ai.domain.AiServiceProvider
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -31,7 +32,7 @@ class SettingsViewModel(application: Application) : AndroidViewModel(application
     // [R6 FIX] 改为懒加载 ServiceRegistry 单例：原 6 处直接 new AiService(getApplication())，
     // 每次点击都新建网关实例（含 OkHttpClient/Retrofit/重试器/限流器），绕过单例。
     private val aiService: AiService by lazy {
-        ServiceRegistry.getOrThrow(AiService::class.java)
+        ServiceRegistry.getOrThrow(AiServiceProvider::class.java) as AiService
     }
     // [R6 FIX] localModelProvider 也改 lazy，避免构造时 ServiceRegistry.get 返回 null
     private val localModelProvider by lazy {
