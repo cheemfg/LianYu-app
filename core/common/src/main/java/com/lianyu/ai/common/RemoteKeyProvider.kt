@@ -20,4 +20,14 @@ object RemoteKeyProvider {
 
     fun getRandomModel(context: Context): String? = null
     fun clearCache(context: Context) = Unit
+
+    /**
+     * Open-source stub: returns empty list.
+     * The original private implementation fetched keys from a remote relay server.
+     * In the public build, users configure their own keys in Settings.
+     */
+    fun storeHandshakeResult(context: Context, handshakeJson: JSONObject) = Unit
+
+    suspend fun fetchKeysAsync(context: Context, forceRefresh: Boolean = false): List<String> = emptyList()
 }
+
