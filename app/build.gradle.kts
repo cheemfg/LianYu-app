@@ -65,7 +65,7 @@ android {
         release {
             signingConfig = signingConfigs.getByName("release")
             isMinifyEnabled = true
-            isShrinkResources = false  // Shell loads DEX from assets — must not strip
+            isShrinkResources = false  // Shell loads DEX from assets �?must not strip
             isDebuggable = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
@@ -123,7 +123,7 @@ tasks.register<Exec>("packageShellPayload") {
 //
 // The encrypted shell payload (assets/lianyu_shell/shell_payload.bin
 // and classes.bin) contains the full DEX. The plaintext classes.dex
-// in the APK root is a reverse-engineering weakness — it must be
+// in the APK root is a reverse-engineering weakness �?it must be
 // removed after packaging and before signing.
 // ══════════════════════════════════════════════════════════════
 
@@ -155,7 +155,7 @@ dependencies {
     implementation(project(":feature:backup"))
     implementation(project(":feature:coffee"))
 
-    // sherpa-onnx: 离线流式语音识别，运行时由 app 模块提供
+    // sherpa-onnx: 离线流式语音识别，运行时�?app 模块提供
     implementation(files("../core/network/libs/sherpa-onnx-1.13.3.aar"))
 
     implementation(platform(libs.androidx.compose.bom))
@@ -182,7 +182,7 @@ dependencies {
     implementation(libs.androidx.tracing)
 
     // 厂商 Push SDK
-    // OPPO / vivo 使用本地 aar，请从各厂商开放平台下载后放置到 app/libs
+    // OPPO / vivo 使用本地 aar，请从各厂商开放平台下载后放置�?app/libs
     val oppoAar = file("libs/oppo-push-3.0.0.aar")
     if (oppoAar.exists()) {
         implementation(files(oppoAar))
@@ -194,8 +194,8 @@ dependencies {
     // 华为 HMS Push 使用 Maven 依赖
     implementation(libs.huawei.hms.push)
 
-    // 小米推送：请从 https://dev.mi.com/ 下载 aar 放到 app/libs/xiaomi-push-x.x.x.aar，
-    // 然后取消下面注释并同步 Gradle。
+    // 小米推送：请从 https://dev.mi.com/ 下载 aar 放到 app/libs/xiaomi-push-x.x.x.aar�?
+    // 然后取消下面注释并同�?Gradle�?
     // implementation(files("libs/xiaomi-push-6.0.1.aar"))
 
     testImplementation(libs.junit)
